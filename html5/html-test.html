@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://create.maka.im/display/preview/mb?id=BBMMXBIT -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="MAKA.im | 简单、强大的HTML5创作工具。移动化社交化的时代，轻、快、优雅，MAKA完美呈现！">
+      <meta name="keywords" content="MAKA, MAKA.im, MAKA微信, MAKA创作, MAKA平台, HTML5, MAKA APP">
+      <title>MAKA2.0-预览</title>
+
+      <link rel="icon" type="image/ico" href="http://makaplat.qiniudn.com/newfavicon.ico">
+
+      <!-- 新 Bootstrap 核心 CSS 文件 -->
+      <link href="http://create.maka.im/templates/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet">
+      <!-- display.css -->
+      <link href="http://create.maka.im//css/v3/display.css?2.1" rel="stylesheet">
+      <link href="http://create.maka.im//sea/sea-modules/icheck/1.0.2/skins/minimal/green.css" rel="stylesheet">
+      <link href="http://create.maka.im//sea/sea-modules/jquery/jcrop/0.9.12/jquery.Jcrop.min.css" rel="stylesheet">
+
+      <script type="text/javascript" async="" defer="" src="./html-test_files/piwik.js"></script><script src="./html-test_files/jquery.min.js"></script>
+
+      <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="./html-test_files/bootstrap.min.js"></script>
+      <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+
+  </head>
+  <body>
+    <div class="frame center">
+      <div class="phone-preview">
+        <div class="mcross">
+          <div class="mtop"></div>
+          <div class="mbottom"></div>
+        </div>
+        <iframe viewport="640px" class="pubiframe" src="./html-test_files/BBMMXBIT.html"></iframe>
+      </div>
+
+          </div>
+  
+
+
+  <script src="./html-test_files/icheck.min.js"></script>
+  <script type="text/javascript" src="./html-test_files/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="./html-test_files/jquery.fileupload.js"></script>
+  <script type="text/javascript" src="./html-test_files/swfobject.js"></script>
+  <script type="text/javascript" src="./html-test_files/jquery.Jcrop.min.js"></script>
+  
+  <script type="text/javascript" src="./html-test_files/jquery.blockUI.js"></script>
+  <script type="text/javascript" src="./html-test_files/tools.js"></script>
+  
+
+  <script type="text/JavaScript">
+  var base_url = "http://create.maka.im/";
+  var base_url = "file:///home/zhuchao/github.com/code/html5/";
+  var _uid_ = "";
+  (function(){
+    var img_id2;
+    var coverurl = 'http://resource.maka.im/get?img=id/';
+
+    // Create variables (in this scope) to hold the API and image size
+    var jcrop_api2,
+        boundx2,
+        boundy2,
+
+        // Grab some information about the preview pane
+        $preview = $('#preview-pane'),
+        $pcnt = $('#preview-pane .preview-container'),
+        $pimg = $('#preview-pane .preview-container img'),
+
+        xsize = $pcnt.width(),
+        ysize = $pcnt.height();
+    
+    $('#cropbox').Jcrop({
+      onChange: updatePreview,
+      onSelect: updatePreview,
+      aspectRatio: 1,
+      //setSelect: [ 0, 0, 100, 100 ]
+    },function(){
+      // Use the API to get the real image size
+      var bounds = this.getBounds();
+      boundx2 = bounds[0];
+      boundy2 = bounds[1];
+      // Store the API in the jcrop_api variable
+      jcrop_api2 = this;
+
+      // Move the preview into the jcrop container for css positioning
+      $preview.appendTo(jcrop_api2.ui.holder);
+    });
+
+    if (jcrop_api2)
+    {
+      jcrop_api2.setSelect([
+        0,
+        0,
+        100,
+        100,
+      ]);
+    }
+    
+
+    function updatePreview(c)
+    {
+      xsize = $pcnt.width(),
+      ysize = $pcnt.height();
+      var bounds = jcrop_api2.getBounds();
+      boundx = bounds[0];
+      boundy = bounds[1];
+
+      if (parseInt(c.w) > 0)
+      {
+        var rx = xsize / c.w;
+        var ry = ysize / c.h;
+
+        $pimg.css({
+          width: Math.round(rx * boundx) + 'px',
+          height: Math.round(ry * boundy) + 'px',
+          marginLeft: '-' + Math.round(rx * c.x) + 'px',
+          marginTop: '-' + Math.round(ry * c.y) + 'px'
+        });
+      } 
+
+      var tar = $('.jcrop-holder .preimg:eq(0)');
+      var img = new Image(); 
+      img.src = tar.attr("src"); 
+      var trueWidth = img.width;//图片实际宽度 
+      var trueHeight = img.height;//图片实际高度 
+
+      var width = tar.width();
+      var height = tar.height();
+      
+      var scale = trueHeight/height;
+      if (trueWidth/trueHeight > width/height)
+      {
+        scale = trueWidth/width;
+      }
+
+      var url = coverurl+img_id2+'/crop/'+c.w*scale+'x'+c.h*scale+'a'+Math.round(c.x)*scale+'a'+Math.round(c.y)*scale;
+      $('#mfileval').val(url);
+    }
+
+    /* new event start */
+    function counttags()
+    {
+      var val = '';
+
+      $('.mtag li').not('.text').each(function(){
+      if($(this).hasClass('hover'))
+      {
+        val += '/'+$(this).text();
+      }
+    });
+      val += '/'+$('.mtag li.text input').val();
+      $('#mtags').val(val);
+    }
+    function show_pubiframe() {
+      $('#neweventmodal .modal-title').text('选取模版');
+      $('.pubdemo').animate({'top':0},'fast');
+    }
+    function hide_pubiframe() {
+      $('#neweventmodal .modal-title').text('新建项目');
+      $('.pubdemo').animate({'top':'-800px'},'fast');
+    }
+
+    $('.mtag li').not('.text').click(function(){
+      var len = $('.mtag li.hover').length;
+      
+      if($(this).hasClass('hover'))
+      {
+        $(this).removeClass('hover');
+      }
+      else
+      {
+        if (len >= 5)
+        {
+          return;
+        }
+
+        $(this).addClass('hover');
+      }
+    });
+
+    $('.noicheck').iCheck({
+      checkboxClass: 'icheckbox_minimal-green',
+      radioClass: 'iradio_minimal-green',
+      increaseArea: '-10' // optional
+    }).on('ifClicked',function(){
+      $(this).iCheck('uncheck');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.mimg').click(function(){
+      $(this).prev().click();
+    });
+
+    $('.mfile').each(function(){
+      var url = $(this).data('url');
+      $(this).fileupload({
+        url: url,
+        dataType: 'json',
+        paramName: 'file',
+        formData: [
+            {
+                name: 'uid',
+                value: _uid_
+            },
+            {
+                name: 'fid',
+                value: 'mfile'
+            }
+        ],
+        start: function(){
+          Tools.blockUI($('.mimg'));
+        },
+        done: function (e, data) {
+          if (data.result != undefined && data.result.id != undefined)
+          {
+            var url = 'http://www.maka.mobi/get?img=id/'+data.result.id+'/thumb/100';
+            jcrop_api2.setImage(url);
+            $pimg.attr('src', url);
+
+            $('.myjcrop').show();
+            jcrop_api2.setSelect([
+              0,
+              0,
+              100,
+              100,
+            ]);
+
+            img_id2 = data.result.id;
+            $('.mimg').addClass('haveimg');
+          }
+          else
+          {
+            //failed
+            if (data.result.error != undefined && data.result.error.message != undefined)
+            {
+              alert(data.result.error.message);
+            }
+            else
+            {
+              alert('Upload Failed.');
+            }
+          }
+          Tools.unblockUI($('.mimg'));
+        }
+      });
+    });
+
+    $('.myjcrop .cancel').click(function(){
+      var val = $('#mfileval').data('preurl');
+      if(val == undefined || val == '')
+      {
+        //无图
+        $('.mimg').removeClass('haveimg');
+        $('#mfileval').val('');
+      }
+      else
+      {
+        $('#mfileval').val(val);
+        $('.asypimg').attr('src', val);
+      }
+
+      $('.myjcrop').hide();
+    });
+
+    $('.myjcrop .save').click(function(){
+      if (img_id2 == undefined)
+      {
+        return;
+      }
+
+      Tools.blockUI($('.mimg'));
+
+      var id = 'BBMMXBIT';
+      var version = '2';
+      $.ajax({
+         url: base_url + 'admin/event/ajax',
+         type:'post',
+         data:{
+             type: 'parmas',
+             name: 'thum',
+             val : $('#mfileval').val(),
+             id: id,
+             version: version
+         },
+         dataType:'JSON',
+      }).done(function(result){
+        if(result.error == 1)
+        {
+          //Info.infomation('修改失败或无修改.');
+        }
+        
+        $('#mfileval').data('preurl',$('#mfileval').val());
+        $('.asypimg').attr('src',$('#mfileval').val());
+        $('.myjcrop').hide();
+        Tools.unblockUI($('.mimg'));
+      });
+    });
+
+    $('.mchoose li').click(function(){
+      $(this).parent().find('li').removeClass('hover');
+      $(this).addClass('hover');
+
+      $('#pubversion').val($(this).data('version'));
+    });
+    $('.pubdemo li').click(function(){
+      $(this).parent().find('li').removeClass('hover');
+      $(this).addClass('hover');
+
+      if ($(this).data('id') != '')
+      {
+        $(".pubiframe").attr('src', 'http://create.maka.im/mview/viewer.html?id='+$(this).data('id'));
+        $(".pubshadow").hide();
+      }
+      else
+      {
+        $(".pubshadow").show();
+      }
+      $('#default_event_pid').val($(this).data('id'));
+    });
+
+    //ajedit
+    $('p.ajedit').click(function(){
+      if(!$(this).hasClass('focus'))
+      {
+        var type = $(this).data('type');
+        if (type == 'input')
+        {
+          var tar = $('<input type="text" value="'+$(this).html()+'">');
+          tar.blur(function(){
+            var id = 'BBMMXBIT';
+            var version = '2';
+            $.ajax({
+               url: base_url + 'admin/event/ajax',
+               type:'post',
+               data:{
+                   type: 'parmas',
+                   name: 'title',
+                   val : $(this).val(),
+                   id: id,
+                   version: version
+               },
+               dataType:'JSON',
+            }).done(function(result){
+              if(result.error == 1)
+              {
+                //Info.infomation('修改失败或无修改.');
+              }
+              
+              tar.parents('p.ajedit').removeClass('focus');
+              tar.parent().html(tar.val());
+            });
+          });
+          $(this).html(tar);
+          $(this).find('input').focus();
+        }
+
+        if (type == 'textarea')
+        {
+          var tar = $('<textarea>'+($(this).html()=='这里是描述哦，赶紧打点字进去！'?'':$(this).html())+'</textarea>');
+          tar.blur(function(){
+            var id = 'BBMMXBIT';
+            var version = '2';
+            $.ajax({
+               url: base_url + 'admin/event/ajax',
+               type:'post',
+               data:{
+                   type: 'parmas',
+                   name: 'content',
+                   val : $(this).val(),
+                   id: id,
+                   version: version
+               },
+               dataType:'JSON',
+            }).done(function(result){
+              if(result.error == 1)
+              {
+                //Info.infomation('修改失败或无修改.');
+              }
+              
+              tar.parents('p.ajedit').removeClass('focus');
+              tar.parent().html(tar.val());
+            });
+          });
+          $(this).html(tar);
+          $(this).find('textarea').focus();
+        }
+
+        $(this).addClass('focus');
+      }
+
+    });
+
+    $('#showtags').click(function(){
+      $(this).prev().hide();
+      $(this).parent().next().find('.tags').show();
+      $(this).hide();
+    });
+
+    $('.mtop').click(function(){
+      if($("body").find("iframe")[0].contentWindow == undefined || $("body").find("iframe")[0].contentWindow.editor_makacard == undefined)
+      {
+        return;
+      }
+      $("body").find("iframe")[0].contentWindow.editor_makacard.prevpage();
+    });
+    $('.mbottom').click(function(){
+      if($("body").find("iframe")[0].contentWindow == undefined || $("body").find("iframe")[0].contentWindow.editor_makacard == undefined)
+      {
+        return;
+      }
+      $("body").find("iframe")[0].contentWindow.editor_makacard.nextpage();
+    });
+  })();  
+  </script>
+
+
+</body></html>
