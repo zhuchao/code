@@ -1,0 +1,6 @@
+//获取key值
+echo 'Task_pullPosition_2' | base64
+//链接memcached服务器
+nc 192.168.8.14 11211
+get VGFza19wdWxsUG9zaXRpb25fMQo=
+
