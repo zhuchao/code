@@ -16,7 +16,15 @@ class StackTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(0, count($stack));
 	}
 
+	/**
+	 *@test 
+	 */
+	public function indexEquals()
+	{
+		$arr = array(1,2,3,4);
+		$this->assertEquals(2, $arr[0]);
 
+	}
 }
 
 
