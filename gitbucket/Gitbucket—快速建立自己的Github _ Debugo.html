@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://debugo.com/gitbucket/?utm_source=tuicool -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Gitbucket—快速建立自己的Github | Debugo</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://debugo.com/xmlrpc.php">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" type="application/rss+xml" title="Debugo » Feed" href="http://debugo.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Debugo » 评论Feed" href="http://debugo.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Debugo » Gitbucket—快速建立自己的Github评论Feed" href="http://debugo.com/gitbucket/feed/">
+<link rel="stylesheet" id="crayon-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="mosaic-skeleton-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/skeleton.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" id="mosaic-style-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/style.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" id="mosaic-superfish-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/superfish.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" id="mosaic-layout-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/layout.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" id="jetpack_css-css" href="./Gitbucket—快速建立自己的Github _ Debugo_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript">
+var duoshuoQuery = {"short_name":"debugo","sso":{"login":"http:\/\/debugo.com\/wp-login.php?action=duoshuo_login","logout":"http:\/\/debugo.com\/wp-login.php?action=logout&_wpnonce=e2f0536067"},"theme":"default","stylePatch":"wordpress\/Mosaic"};
+duoshuoQuery.sso.login += '&redirect_to=' + encodeURIComponent(window.location.href);
+duoshuoQuery.sso.logout += '&redirect_to=' + encodeURIComponent(window.location.href);
+</script>
+<script type="text/javascript" src="./Gitbucket—快速建立自己的Github _ Debugo_files/embed.js" charset="UTF-8" async="async"></script>
+<script type="text/javascript" src="./Gitbucket—快速建立自己的Github _ Debugo_files/jquery.js"></script><link type="text/css" rel="stylesheet" href="./Gitbucket—快速建立自己的Github _ Debugo_files/embed.default.css">
+<script type="text/javascript" src="./Gitbucket—快速建立自己的Github _ Debugo_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.7.1","is_admin":"0","ajaxurl":"http:\/\/debugo.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Gitbucket—快速建立自己的Github _ Debugo_files/crayon.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://debugo.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://debugo.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Redis Cluster学习笔记2" href="http://debugo.com/redis-cluster-notes2/">
+<link rel="next" title="在Windows下构建Docker开发环境" href="http://debugo.com/windows-docker/">
+<meta name="generator" content="WordPress 4.1.7">
+<link rel="canonical" href="http://debugo.com/gitbucket/">
+<link rel="shortlink" href="http://wp.me/p5G8Ex-lb">
+
+<link rel="dns-prefetch" href="http://widgets.wp.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<style type="text/css">img#wpstats{display:none}</style><link rel="shortcut icon" href="http://debugo.com/wp-content/uploads/2014/10/favicon.ico"><style type="text/css" id="custom-css">body {background-color: #ffffff}#header {background: #F5F5F5 url(http://debugo.com/wp-content/themes/mosaic/images/header-footer-bg.png) repeat top left scroll}#footer {background: #F5F5F5 url(http://debugo.com/wp-content/themes/mosaic/images/header-footer-bg.png) repeat top left scroll}a, a:link, a:visited, a:active, #content .gist .gist-file .gist-meta a:visited, .entry-title a:hover{color:#62A6E4;}.page-navigation .current, .page-navigation a:hover {background-color: #62A6E4; border-color: #62A6E4; }body{color:#575757;font:normal 15px georgia;line-height:150%}#site-title a{color:#696969;font:normal 40px georgia}#header span.site-desc{color:#949494;font:normal 15px georgia}#navigation ul li a{color:#62A6E4;font:normal 16px georgia}#navigation {border-color:#62A6E4}#navigation ul li.active > a, #navigation ul li.active > a:hover {background:#62A6E4}.entry-title, .entry-title a{color:#505050;font:normal 30px georgia}.entry-meta, .entry-meta span{color:#8a8888;font:normal 12px georgia}.entry-utility, .entry-utility span{color:#8a8888;font:normal 12px georgia}.widget-title{;font:normal 18px georgia}body {}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gitbucket—快速建立自己的Github">
+<meta property="og:url" content="http://debugo.com/gitbucket/">
+<meta property="og:description" content="GitBucket是一个用Scala语言编写的类似Github的应用，界面非常相似。它非常容易安装--容易到你…">
+<meta property="article:published_time" content="2015-05-14T07:16:38+00:00">
+<meta property="article:modified_time" content="2015-05-17T07:17:12+00:00">
+<meta property="article:author" content="http://debugo.com/author/admin/">
+<meta property="og:site_name" content="Debugo">
+<meta property="og:image" content="http://debugo.com/wp-content/uploads/2015/05/newrepo.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:image" content="http://debugo.com/wp-content/uploads/2015/05/account_setting-640x272.png?w=240">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="single single-post postid-1313 single-format-standard right-sidebar">
+<div id="header"><div class="inner container"><div id="logo"><div id="site-title"><a href="http://debugo.com/" title="Debugo"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/logo.png" alt="Debugo"></a></div>
+</div><div id="header-extras"></div></div></div><!--/#header--><div id="navigation"><div class="inner container"></div></div><!--/#navigation-->	
+<div id="wrap" class="container"> 
+	<div id="content-sidebar-wrap">
+		<a id="top"></a>
+	<div id="content" class="eleven columns">
+	
+
+				<div id="post-1313" class="post-1313 post type-post status-publish format-standard hentry category-ops category-tools single">
+					<h1 class="entry-title">Gitbucket—快速建立自己的Github</h1>
+
+					<div class="entry-meta">
+						<span class="entry-date"><a href="http://debugo.com/gitbucket/" title="下午3:16" rel="bookmark">2015年5月14日</a></span> by <span class="author vcard"><a class="url fn n" href="http://debugo.com/author/admin/" title="View all posts by debugo">debugo</a></span> <span class="comments-link"> · <a href="http://debugo.com/gitbucket/#respond" class="ds-thread-count" data-thread-key="1313" title="《Gitbucket—快速建立自己的Github》上的评论">Leave a comment</a></span> 					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+												<p><a href="https://github.com/takezoe/gitbucket">GitBucket</a>是一个用Scala语言编写的类似Github的应用，界面非常相似。它非常容易安装–容易到你只需要把它的war文件扔到tomcat中，然后启动tomcat就直接可以访问了。或者直接java执行它就可以运行了！<span id="more-1313"></span><br>
+现在版本（3.2）的GitBucket提供了下面的基本功能：<br>
+公有/私有Git仓库（HTTP和SSH访问，内部已经集成了SSH服务器）<br>
+在线查看和编辑仓库代码<br>
+<strong> · </strong>搜索（代码和Issue）<br>
+<strong> · </strong>Wiki<br>
+<strong> · </strong>Issues<br>
+<strong> · </strong>Fork / Pull request<br>
+<strong> · </strong>邮件通知<br>
+<strong> · </strong>活动时间线<br>
+<strong> · </strong>用户管理（管理员）<br>
+<strong> · </strong>用户组（和Github的组织类似）<br>
+<strong> · </strong>LDAP支持<br>
+<strong> · </strong>Gravatar支持<br>
+下面的特性讲会在以后的版本中支持：<br>
+<strong> · </strong>网络图<br>
+<strong> · </strong>统计<br>
+<strong> · </strong>观看次数/打星（Watch/Star）</p>
+<h2>1. 运行gitbucket</h2>
+<p>上面提到了它可以通过两种方式运行，在<a href="https://github.com/takezoe/gitbucket/releases">release page</a>中下载最新的war包，直接使用java -jar gitbucket.war（当然需要1.7以上的JRE环境）就可以运行，可以指定下面几个参数:<br>
+<code>--port=[NUMBER]</code><br>
+<code>--prefix=[CONTEXTPATH]</code><br>
+<code>--host=[HOSTNAME]</code><br>
+<code>--gitbucket.home=[DATA_DIR]</code><br>
+如果没有指定–gitbucket.home，它会把数据保存在$HOME/.gitbucket下面，包括用户数据库信息以及repositories。所以只把这个目录备份就可以了，是不是很方便。</p>
+<h2>2. 配置gitbucket</h2>
+<p>打开<code>http://[hostname]:8080/</code>（如果没有指定<code>--port</code>更换端口的话），就可以看到登录界面，输入root/root登录到主界面中。在右上角Account Setting中可以设置新密码、用户信息、SSH公钥等信息，那么首先为这个超级管理员配置一个新的密码吧。<br>
+<a href="http://debugo.com/wp-content/uploads/2015/05/account_setting.png"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/account_setting-640x272.png" alt="account_setting" width="640" height="272" class="alignnone size-large wp-image-1314"></a><br>
+在右上角的Administration里可以添加新的用户/组，设置新的系统信息。系统信息里几个重要的配置项包括：<br>
+<strong>Base URL</strong>：用于重定向、git repository地址等。这个地址需要先设置DNS后配置，是必须要设置的。<br>
+<strong>Information</strong>：站点信息。<br>
+<strong>Account registration</strong>：是否给公众开放账户注册功能。<br>
+<strong>Default option to create a new repository</strong>：默认创建repository是public还是private。其中所有用户和访客都可以读取public repository，而只有collaborator才能读取private repository。<br>
+<strong>Anonymous access</strong>：    是否允许匿名用户访问public repository。选择deny则任何信息必须验证后才能访问。对于企业内部服务，一般选择deny阻止所有匿名用户的访问。<br>
+<strong>SSH access</strong>：是否启用SSH服务，如果使用需要每个用户在自己的User profile中上传自己的public key。另外，可以配置一个SSH服务使用的端口，默认是29418。<br>
+<strong>LDAP authentication/Notifacation email</strong>：不多作介绍了。</p>
+<h2>3. 使用repository</h2>
+<p>在创建好自己的用户登录后，左侧的new repository就可以建立新的repository。这里我们用一个README.md来初始化。<br>
+<a href="./Gitbucket—快速建立自己的Github _ Debugo_files/newrepo.png"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/newrepo.png" alt="newrepo" width="554" height="381" class="alignnone size-large wp-image-1316"></a><br>
+完成后就可以看到和github类似的项目首页，代码都可以在线编辑，灰常方便。比如我们来编辑README.md这个markdown语句。<br>
+<a href="http://debugo.com/wp-content/uploads/2015/05/editreadme.png"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/editreadme-640x291.png" alt="editreadme" width="640" height="291" class="alignnone size-large wp-image-1315"></a><br>
+我们可以通过<code>git clone http://[your-server-ip]:8080/git/[your-username]/[repository-name].git</code>来克隆这个repository(主页右侧有这个repository的HTTP和SSH的URL提示。)。之后可以通过<code>git push</code>上传本地的version。项目首页上有commits, branches和releases的历史回顾，功能很全面。<br>
+右侧项目Wiki可以让我们编辑markdown格式的wiki页面，issue可以让其他人提交issues of bugs，而Setting里可以设置我们的collaborators了:<br>
+<a href="http://debugo.com/wp-content/uploads/2015/05/managecollabratorator.png"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/managecollabratorator-640x167.png" alt="managecollabratorator" width="640" height="167" class="alignnone size-large wp-image-1317"></a><br>
+其他先不多说了，gitbucket简单好用，向gitbucket的作者致敬！<br>
+^^</p>
+						<div class="clear"></div>
+											</div><!-- .entry-content -->
+
+	
+					<div class="entry-utility">
+						Posted in <a href="http://debugo.com/category/ops/" rel="category tag">Ops</a>, <a href="http://debugo.com/category/ops/tools/" rel="category tag">Tools</a>. 					</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://debugo.com/redis-cluster-notes2/" rel="prev"><span class="meta-nav">←</span> Redis Cluster学习笔记2</a></div>
+					<div class="nav-next"><a href="http://debugo.com/windows-docker/" rel="next">在Windows下构建Docker开发环境 <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+				
+				<a name="comments"></a>
+
+<div class="ds-thread" data-thread-key="1313" data-author-key="1" data-title="Gitbucket—快速建立自己的Github" data-url="http://debugo.com/gitbucket/" id="ds-thread"><div id="ds-reset"><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">0条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://debugo.duoshuo.com/login/weibo/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://debugo.duoshuo.com/login/qq/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://debugo.duoshuo.com/login/renren/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a href="http://debugo.duoshuo.com/login/douban/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://debugo.duoshuo.com/login/kaixin/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://debugo.duoshuo.com/login/netease/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-netease">网易</a></li><li><a href="http://debugo.duoshuo.com/login/sohu/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-sohu">搜狐</a></li><li><a href="http://debugo.duoshuo.com/login/baidu/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://debugo.duoshuo.com/login/google/?sso=1&redirect_uri=http%3A%2F%2Fdebugo.com%2Fwp-login.php%3Faction%3Dduoshuo_login%26redirect_to%3Dhttp%253A%252F%252Fdebugo.com%252Fgitbucket%252F%253Futm_source%253Dtuicool" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./Gitbucket—快速建立自己的Github _ Debugo_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1392771170113159435">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="5506a5ebd6001"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">Debugo正在使用多说</a></p></div></div>
+
+<script type="text/javascript">
+	if (typeof DUOSHUO !== 'undefined')
+		DUOSHUO.EmbedThread('.ds-thread');
+</script>
+	<div id="ds-ssr">
+
+		
+            <ol id="commentlist">
+                            </ol>
+
+		            
+    </div>
+		</div><!-- /.columns (#content) -->
+<div id="sidebar" class="five columns" role="complementary">
+	<ul>
+		<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://debugo.com/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="搜索">
+				</div>
+			</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">近期文章</h3>		<ul>
+					<li>
+				<a href="http://debugo.com/r-intro2/">R入门笔记2</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/nginx-rewrite/">Nginx重定向&amp;静动资源分离</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/flask-restful/">Flask-RESTful构建小型REST服务</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/apscheduler/">Python任务调度模块 – APScheduler</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/mongo-rs-prio/">MongoDB RS优先级设置</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/mongo-auth/">MongoDB的权限管理</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/docker-compose/">Docker Compose—简化复杂应用的利器</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/windows-docker/">在Windows下构建Docker开发环境</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/gitbucket/">Gitbucket—快速建立自己的Github</a>
+						</li>
+					<li>
+				<a href="http://debugo.com/redis-cluster-notes2/">Redis Cluster学习笔记2</a>
+						</li>
+				</ul>
+		</li><li id="ds-top-threads-2" class="widget-container ds-widget-top-threads"><h3 class="widget-title">热评文章</h3><ul class="ds-top-threads" data-num-items="5" data-range="monthly" id="ds-top-threads"><li><a target="_blank" href="http://debugo.com/hbase-shell-cmds/" title="HBase Shell 常用操作">HBase Shell 常用操作</a></li><li><a target="_blank" href="http://debugo.com/mongo-auth/" title="MongoDB的权限管理">MongoDB的权限管理</a></li></ul></li><script>
+if (typeof DUOSHUO !== 'undefined')
+	DUOSHUO.TopThreads && DUOSHUO.TopThreads('.ds-top-threads');
+</script><li id="archives-2" class="widget-container widget_archive"><h3 class="widget-title">文章归档</h3>		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			<option value="">选择月份</option>
+
+				<option value="http://debugo.com/2015/07/"> 2015年七月 </option>
+	<option value="http://debugo.com/2015/06/"> 2015年六月 </option>
+	<option value="http://debugo.com/2015/05/"> 2015年五月 </option>
+	<option value="http://debugo.com/2015/04/"> 2015年四月 </option>
+	<option value="http://debugo.com/2015/03/"> 2015年三月 </option>
+	<option value="http://debugo.com/2015/02/"> 2015年二月 </option>
+	<option value="http://debugo.com/2015/01/"> 2015年一月 </option>
+	<option value="http://debugo.com/2014/12/"> 2014年十二月 </option>
+	<option value="http://debugo.com/2014/11/"> 2014年十一月 </option>
+	<option value="http://debugo.com/2014/10/"> 2014年十月 </option>
+	<option value="http://debugo.com/2014/09/"> 2014年九月 </option>
+	<option value="http://debugo.com/2014/08/"> 2014年八月 </option>
+	<option value="http://debugo.com/2014/07/"> 2014年七月 </option>
+	<option value="http://debugo.com/2014/06/"> 2014年六月 </option>
+	<option value="http://debugo.com/2014/05/"> 2014年五月 </option>
+	<option value="http://debugo.com/2014/04/"> 2014年四月 </option>
+	<option value="http://debugo.com/2014/03/"> 2014年三月 </option>
+	<option value="http://debugo.com/2014/02/"> 2014年二月 </option>
+	<option value="http://debugo.com/2014/01/"> 2014年一月 </option>
+	<option value="http://debugo.com/2013/12/"> 2013年十二月 </option>
+	<option value="http://debugo.com/2013/11/"> 2013年十一月 </option>
+	<option value="http://debugo.com/2013/10/"> 2013年十月 </option>
+	<option value="http://debugo.com/2013/09/"> 2013年九月 </option>
+	<option value="http://debugo.com/2013/08/"> 2013年八月 </option>
+	<option value="http://debugo.com/2013/07/"> 2013年七月 </option>
+	<option value="http://debugo.com/2013/06/"> 2013年六月 </option>
+	<option value="http://debugo.com/2013/05/"> 2013年五月 </option>
+	<option value="http://debugo.com/2013/04/"> 2013年四月 </option>
+	<option value="http://debugo.com/2013/01/"> 2013年一月 </option>
+	<option value="http://debugo.com/2012/12/"> 2012年十二月 </option>
+	<option value="http://debugo.com/2012/10/"> 2012年十月 </option>
+	<option value="http://debugo.com/2012/09/"> 2012年九月 </option>
+	<option value="http://debugo.com/2012/08/"> 2012年八月 </option>
+	<option value="http://debugo.com/2012/07/"> 2012年七月 </option>
+	<option value="http://debugo.com/2012/06/"> 2012年六月 </option>
+	<option value="http://debugo.com/2012/05/"> 2012年五月 </option>
+	<option value="http://debugo.com/2012/04/"> 2012年四月 </option>
+	<option value="http://debugo.com/2011/11/"> 2011年十一月 </option>
+	<option value="http://debugo.com/2011/10/"> 2011年十月 </option>
+	<option value="http://debugo.com/2011/09/"> 2011年九月 </option>
+	<option value="http://debugo.com/2011/08/"> 2011年八月 </option>
+	<option value="http://debugo.com/2011/07/"> 2011年七月 </option>
+		</select>
+</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">分类目录</h3>		<ul>
+	<li class="cat-item cat-item-5"><a href="http://debugo.com/category/bd/">BigData</a> (48)
+<ul class="children">
+	<li class="cat-item cat-item-68"><a href="http://debugo.com/category/bd/hadoop/">Hadoop</a> (21)
+</li>
+	<li class="cat-item cat-item-71"><a href="http://debugo.com/category/bd/hbasehive/">HBase|Hive</a> (13)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://debugo.com/category/bd/spark/">Spark</a> (11)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-61"><a href="http://debugo.com/category/db/">Database</a> (79)
+<ul class="children">
+	<li class="cat-item cat-item-9"><a href="http://debugo.com/category/db/mysql/">MySQL</a> (21)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://debugo.com/category/db/nosql/">NoSQL</a> (26)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://debugo.com/category/db/oracle/">Oracle</a> (36)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-62"><a href="http://debugo.com/category/dev/">Dev</a> (58)
+<ul class="children">
+	<li class="cat-item cat-item-4"><a href="http://debugo.com/category/dev/c/">C|C++</a> (16)
+</li>
+	<li class="cat-item cat-item-64"><a href="http://debugo.com/category/dev/js/">JavaScript</a> (10)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://debugo.com/category/dev/java/">Java|Scala</a> (19)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://debugo.com/category/dev/pyr/">Python|R</a> (13)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-63"><a href="http://debugo.com/category/ops/">Ops</a> (90)
+<ul class="children">
+	<li class="cat-item cat-item-8"><a href="http://debugo.com/category/ops/linuxsys/">Linux</a> (51)
+</li>
+	<li class="cat-item cat-item-65"><a href="http://debugo.com/category/ops/tools/">Tools</a> (27)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://debugo.com/category/ops/virt/">Virtualization</a> (12)
+</li>
+</ul>
+</li>
+		</ul>
+</li><li id="text-2" class="widget-container widget_text"><h3 class="widget-title">友链</h3>			<div class="textwidget"><a href="http://www.geewaza.com/">geewaza</a><br>
+<a href="http://www.race604.com/">Jlog</a><br>
+<a href="http://bananalighter.com/">Bananalighter</a><br>
+<a href="http://blog.fens.me/">粉丝日志</a><br></div>
+		</li><li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">功能</h3>			<ul>
+						<li><a href="http://debugo.com/wp-login.php">登录</a></li>
+			<li><a href="http://debugo.com/feed/">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://debugo.com/comments/feed/">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+</li>	</ul>
+
+
+
+		</div><!-- /#sidebar -->
+		<div class="clear"></div>
+	</div><!-- /#content-sidebar-wrap -->
+	
+</div><!--/#wrap.container-->
+<div class="clear"></div><div id="footer"><div class="inner container">
+<div id="credits-wrap"><div id="copyright">
+	Debugo © 2015
+</div>
+
+<div id="credits">
+	Powered by <a href="http://wordpress.org/">WordPress</a>. 
+	Design by <a href="http://wildweblab.com/">WildWebLab</a>
+</div></div><!-- /#credits-wrap --></div></div><!--/#footer-->
+	<div style="display:none">
+	</div>
+<script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201532"></script>
+<script type="text/javascript" src="http://s.gravatar.com/js/gprofiles.js?ver=2015Augaa"></script></body></html>
