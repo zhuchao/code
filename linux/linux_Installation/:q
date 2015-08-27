@@ -1,0 +1,35 @@
+ns及netbeans中文乱码问题解决方法,本文详细讲解了安装操作步骤,需要的朋友可以参考下
+1）安装JDK
+下载JDK：
+官网http://www.oracle.com/technetwork/java/javase/downloads/index.html（下载jdk而不是jre，区分jdk和jre）
+本人将其安装在/usr/lib/jvm/java中（此步根据需要自定义，/jvm/java中后属于自建）   
+cp jdk-6u35-linux-i586.bin /usr/lib/jvm/java/
+获得其权限：
+sudo chmod u+x /usr/lib/jvm/java/jdk-6u35-linux-i586.bin
+安装JDK：
+sudo /usr/lib/jvm/java/jdk-6u35-linux-i586.bin
+配置环境变量：
+sudo gedit /etc/profile
+在文件后边添加：
+#set java environment
+JAVA_HOME=/usr/lib/jvm/java/jdk1.6.0_35
+export JRE_HOME=/usr/lib/jvm/java/jdk1.6.0_35/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+设置默认JDK（ubuntu中一般默认jdk为自身的openjdk，故需要设置使其默认jdk为安装的jdk）
+sudo update-alternatives –install /usr/bin/java java /usr/lib/jvm/java/jdk1.6.0_35/bin/java 300
+sudo update-alternatives –install /usr/bin/javac javac /usr/lib/jvm/java/jdk1.6.0_35/bin/javac 300
+（2）安装netbeans
+下载netbeans：（根据需要选择，此处选择php，netbeans安装完可以根据需要下载插件） 
+官网http://netbeans.org/downloads/
+获得权限(找到下载目录)
+sudo chmod u+x netbeans-7.2-ml-php-linux.sh
+安装 
+sh netbeans-7.2-ml-php-linux.sh 
+之后会出现图文界面根据需要选择安装路径，默认jdk为已安装jdk
+（3）netbeans 乱码问题 : 安装中文字库
+sudo apt-get update
+sudo apt-get install ttf-arphic-ukai ttf-arphic-uming
+sudo apt-get install ttf-wqy-zenhei
+sudo fc-cache -v #强制更新字体缓存
+乱码原因及解决请参考：http://www.jb51.net/os/Ubuntu/310187.html
