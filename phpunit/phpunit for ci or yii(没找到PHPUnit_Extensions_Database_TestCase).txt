@@ -1,0 +1,8 @@
+1. 在Ubuntu下用sudo apt-get install phpunit安装好phpunit；
+2. 下载上面github中的dbunit(https://github.com/sebastianbergmann/dbunit)代码包(或者 https://github.com/denglitong/dbunit)，将src/Extensions下面的Database目录拷贝到phpunit安装目录中的/usr/share/php/PHPUnit/Extensions下，记得修改/Database/Autoload.php增加一行：
+"phpunit_extensions_database_testcase_trait" => "/Extensions/Database/TestCaseTrait.php" ；
+
+(3. 在yii框架中的protected/tests/unit中写单元测试controller类的时候记得要重写构造函数:
+public __construct() { parent::__construct(uniqid()); }；)
+
+4. 在项目代码的protected/tests目录下在终端执行phpunit unit/UserController_Test.php，即可正常执行单元测试 ；

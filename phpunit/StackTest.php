@@ -22,8 +22,8 @@ class StackTest extends PHPUnit_Framework_TestCase
 	public function indexEquals()
 	{
 		$arr = array(1,2,3,4);
-		$this->assertEquals(2, $arr[0]);
-
+		$this->assertEquals(5, $arr[0]);
+		
 	}
 }
 
